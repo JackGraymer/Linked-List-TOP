@@ -66,16 +66,19 @@ class LinkedList{
     }
 
     pop(){
-        /* if(this.size == 0){
+        if(this.size == 0){
             return
-        }
-        if(this.size == 1){
+        }else if(this.size == 1){
             this.head = null
-        }else{ */
+            this.size --
+            return
+        }else{
             let current = this.atIndex(this.size-2)
             current.nextNode = null
             console.log('pop')
-        //}
+            this.size --
+            return
+        }
         
     }
 
@@ -129,17 +132,20 @@ class LinkedList{
         node.nextNode = prev.nextNode
         prev.nextNode = node
         console.log('prev', prev)
+        this.size++
     }
 
     removeAt(index){
         if(this.size > 0){
             if(index === 0){
                 this.head = this.head.nextNode
+                this.size--
                 return
             }
             let prev = this.atIndex(index-1)
             let current = this.atIndex(index)
             prev.nextNode = current.nextNode
+            this.size--
         }
         
     }
@@ -176,6 +182,7 @@ list.contains(80)
 list.find(15)
 list.removeAt(0)
 list.toString()
+list.getSize()
 list.pop()
 list.pop()
 list.toString()
